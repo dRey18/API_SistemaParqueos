@@ -4,24 +4,25 @@ const { initialize, closePool } = require('./database');
 
 const app = express();
 
+//Mandamos a llamar el archivo parqueoRoutes 
 const parqueoRoutes = require('./routes/parqueoRoutes'); 
 
 
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-
+//hacemos uso de la definicion que hicimos arriba
 app.use('/api', parqueoRoutes);
 
 // Inicializar la conexión a Oracle antes de iniciar el servidor
 initialize()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      console.log(`Servidor corriendo en http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error('❌ No se pudo iniciar el servidor:', err);
+    console.error('No se pudo iniciar el servidor:', err);
     process.exit(1);
   });
 

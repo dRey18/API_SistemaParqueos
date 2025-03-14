@@ -11,9 +11,9 @@ async function initialize() {
       poolIncrement: 2,
       poolTimeout: 60,
     });
-    console.log('✅ Pool de conexiones a Oracle inicializado');
+    console.log('Pool de conexiones a Oracle inicializado');
   } catch (err) {
-    console.error('❌ Error inicializando el pool de conexiones:', err);
+    console.error('Error inicializando el pool de conexiones:', err);
     throw err;
   }
 }
@@ -22,7 +22,7 @@ async function getConnection() {
   try {
     return await oracledb.getConnection();
   } catch (err) {
-    console.error('❌ Error obteniendo conexión:', err);
+    console.error('Error obteniendo conexión:', err);
     throw err;
   }
 }
@@ -30,9 +30,9 @@ async function getConnection() {
 async function closePool() {
   try {
     await oracledb.getPool().close();
-    console.log('✅ Pool de conexiones cerrado');
+    console.log('Pool de conexiones cerrado');
   } catch (err) {
-    console.error('❌ Error cerrando el pool de conexiones:', err);
+    console.error('Error cerrando el pool de conexiones:', err);
   }
 }
 
